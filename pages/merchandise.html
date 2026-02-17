@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Agenda Tambak Bayan - Kegiatan dan acara mendatang."
+    />
+    <title>Agenda - Tambak Bayan GO-WEB</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            },
+            colors: {
+              'tb-yellow': '#FABD32', /* Warna Kuning Dominan */
+              'tb-orange': '#E88D37', /* Warna Gradasi Bawah */
+              'tb-blue': '#1E459F',   /* Warna Judul Biru */
+              'tb-red': '#CF2A2A',    /* Warna Aksen Merah */
+              'footer-blue': '#143D73',
+              'footer-gold': '#DEA921',
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body class="font-sans antialiased min-h-screen flex flex-col">
+    
+    <header class="w-full bg-[#FABD32] border-b border-[#CF2A2A]/10 sticky top-0 z-50 shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 md:py-4 flex flex-wrap items-center justify-between gap-3">
+        
+        <a href="../index.html" class="flex-shrink-0 inline-flex items-center group">
+          <img src="../assets/beranda/logo.png" alt="Tambak Bayan logo" class="h-10 sm:h-12 md:h-14 object-contain group-hover:scale-105 transition-transform duration-300" />
+          <span class="sr-only">Tambak Bayan GO-WEB</span>
+        </a>
+
+        <button
+          id="menu-toggle"
+          type="button"
+          class="md:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-[#CF2A2A]/10 transition-colors"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+        >
+          <span class="block w-6 h-0.5 bg-[#78350f] rounded-full"></span>
+          <span class="block w-6 h-0.5 bg-[#78350f] rounded-full"></span>
+          <span class="block w-6 h-0.5 bg-[#78350f] rounded-full"></span>
+        </button>
+
+        <nav
+          id="main-nav"
+          class="hidden md:flex items-center gap-0 w-full md:w-auto order-3 md:order-none basis-full md:basis-auto bg-[#FABD32]/98 md:bg-transparent backdrop-blur-sm rounded-b-lg md:rounded-none -mx-4 px-4 md:mx-0 md:px-0"
+          aria-label="Main Navigation"
+        >
+          <ul class="flex flex-col md:flex-row items-center gap-3 md:gap-0 py-3 md:py-0 list-none m-0 p-0 font-sans">
+            <li class="border-r border-[#78350f]/30 md:pr-3 md:pl-3 first:pl-0 w-full md:w-auto text-center">
+              <a href="../index.html" class="text-[#78350f] hover:text-[#CF2A2A] transition-colors text-sm font-medium block py-1 md:py-0">Beranda</a>
+            </li>
+            <li class="border-r border-[#78350f]/30 md:pr-3 md:pl-3 w-full md:w-auto text-center">
+              <a href="tentang-kami.html" class="text-[#78350f] hover:text-[#CF2A2A] transition-colors text-sm font-medium block py-1 md:py-0">Tentang Kami</a>
+            </li>
+            <li class="border-r border-[#78350f]/30 md:pr-3 md:pl-3 w-full md:w-auto text-center">
+              <a href="berita.html" class="text-[#78350f] hover:text-[#CF2A2A] transition-colors text-sm font-medium block py-1 md:py-0">Berita</a>
+            </li>
+            <li class="border-r border-[#78350f]/30 md:pr-3 md:pl-3 w-full md:w-auto text-center">
+              <a href="kunjungi-kami.html" class="text-[#78350f] hover:text-[#CF2A2A] transition-colors text-sm font-medium block py-1 md:py-0">Kunjungi Kami</a>
+            </li>
+            <li class="border-r border-[#78350f]/30 md:pr-3 md:pl-3 w-full md:w-auto text-center">
+              <a href="#" class="text-[#1E459F] font-bold border-b-2 border-[#1E459F] transition-colors text-sm block py-1 md:py-0 pointer-events-none" aria-current="page">Agenda</a>
+            </li>
+            <li class="border-r border-[#78350f]/30 md:pr-3 md:pl-3 w-full md:w-auto text-center">
+              <a href="kuliner.html" class="text-[#78350f] hover:text-[#CF2A2A] transition-colors text-sm font-medium block py-1 md:py-0">Kuliner</a>
+            </li>
+            <li class="md:pr-0 md:pl-3 w-full md:w-auto text-center">
+              <a href="merchandise.html" class="text-[#78350f] hover:text-[#CF2A2A] transition-colors text-sm font-medium block py-1 md:py-0">Merchandise</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="flex-1 w-full bg-gradient-to-b from-[#FABD32] to-[#E88D37] flex flex-col items-center pt-16 pb-32 px-4 relative overflow-hidden">
+      
+      <h1 class="text-[#1E459F] font-bold text-2xl md:text-3xl uppercase tracking-wider mb-12 text-center drop-shadow-sm z-10">
+        MERCHANDISE
+      </h1>
+
+      <div class="relative z-10 max-w-lg w-full transform hover:scale-105 transition-transform duration-500">
+        <img 
+            src="../assets/Agenda/Agenda_Coming Soon.png" 
+            alt="Coming Soon" 
+            class="w-full h-auto object-contain drop-shadow-2xl opacity-90 hover:opacity-100 transition-opacity"
+        >
+      </div>
+
+    </main>
+
+    <footer class="w-full bg-[#143D73] text-[#DEA921] py-10 md:py-14 px-4 sm:px-6 lg:px-8 mt-auto z-20 relative">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-start md:justify-between gap-8 md:gap-12">
+        
+        <div class="flex flex-col gap-4 md:gap-5">
+          <div class="font-logo leading-tight">
+            <img src="../assets/beranda/logo_footer.png" alt="Tambak Bayan logo" class="h-10 sm:h-12 md:h-14 object-contain" />
+            <span class="sr-only">Tambak Bayan GO-WEB</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <a href="https://www.instagram.com/institutsenitambakbayan/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center rounded-full bg-[#DEA921]/10 hover:bg-[#DEA921]/20 transition-all hover:scale-110" aria-label="Instagram">
+              <i class="fab fa-instagram text-lg"></i>
+            </a>
+            <a href="mailto:contact@tambakbayan.com" class="w-9 h-9 flex items-center justify-center rounded-full bg-[#DEA921]/10 hover:bg-[#DEA921]/20 transition-all hover:scale-110" aria-label="Email">
+              <i class="fas fa-envelope text-lg"></i>
+            </a>
+            <a href="https://maps.app.goo.gl/mW5gzKq7QU7jjZYP8" target="_blank" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center rounded-full bg-[#DEA921]/10 hover:bg-[#DEA921]/20 transition-all hover:scale-110" aria-label="Lokasi">
+              <i class="fas fa-location-dot text-lg"></i>
+            </a>
+          </div>
+        </div>
+
+        <blockquote class="md:max-w-[55%] lg:max-w-[50%] font-sans relative">
+          <p class="text-[#DEA921]/95 text-sm sm:text-base leading-relaxed tracking-wide">
+            "Semua proses akan menemukan keindahannya pada waktu yang tepat.
+            Selama mural tetap hidup di dinding dan warga terus membuka meja
+            bagi para tamu, Tambak Bayan akan terus bersuara"
+            <cite class="block mt-3 font-semibold not-italic text-[#CF2A2A] uppercase text-xs tracking-wider">— Suseno Karja</cite>
+          </p>
+        </blockquote>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var toggle = document.getElementById('menu-toggle');
+        var nav = document.getElementById('main-nav');
+        if (!toggle || !nav) return;
+        toggle.addEventListener('click', function () {
+          var expanded = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', !expanded);
+          nav.classList.toggle('hidden');
+        });
+      })();
+    </script>
+  </body>
+</html>
