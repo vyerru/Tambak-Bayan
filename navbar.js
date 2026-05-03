@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { name: "Agenda", url: `/pages/agenda.html`, pathMatch: "agenda.html" },
         { name: "Kuliner", url: `/pages/kuliner.html`, pathMatch: "kuliner.html" },
         { name: "Merchandise", url: `/pages/merchandise.html`, pathMatch: "merchandise.html" },
-        { name: "Koleksi Mural", url: `/pages/koleksi-mural.html`, pathMatch: "koleksi-mural" }, 
+        { name: "Koleksi Mural", url: `/pages/koleksi-mural.html`, pathMatch: "detail-koleksi-mural" }, 
     ];
 
     // 2. Render Link dengan logika Active State
