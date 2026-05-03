@@ -12,16 +12,21 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            sans: ['Geologica', 'system-ui', 'sans-serif'],
+            /* Logo: ganti dengan image/SVG logo bila file font Sex Pistols tersedia */
+            logo: ['Impact', 'sans-serif'],
           },
           colors: {
-            'tb-gold': '#FABD32',
+            'gradient-yellow': '#EEBB3B',
+            'gradient-red': '#B92E2B',
             'tb-blue': '#1E459F',
+            'tb-red': '#CF2A2A',
+            'tb-beige': '#E1DCCA',
+            'tb-brown': '#78350f',
             'sunset-gold': '#EEBB3B',
             'sunset-red': '#B92E2B',
             'footer-blue': '#143D73',
             'footer-gold': '#DEA921',
-            'tb-cream': '#E1DCCA',
           },
         },
       },
@@ -41,56 +46,8 @@
   <main
     class="w-full min-h-screen overflow-x-hidden bg-gradient-to-b from-[#EEBB3B] via-[#e5a82f] via-[#dc9428] to-[#B92E2B]">
     <!-- Header: dark blue -->
-    <header class="w-full bg-[#EEBB3B] border-b border-[#B92E2B]/20 sticky top-0 z-50 shadow-sm">
-      <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 md:py-4 flex flex-wrap items-center justify-between gap-3">
-        <a href="#beranda" class="flex-shrink-0 inline-flex items-center">
-          <!-- Logo image from assets/beranda; replace filename if different -->
-          <img src="../../assets/beranda/logo.png" alt="Tambak Bayan logo" class="h-10 sm:h-12 md:h-14 object-contain" />
-          <span class="sr-only">Tambak Bayan GO-WEB</span>
-        </a>
-        <button id="menu-toggle" type="button"
-          class="md:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-[#B92E2B]/10 transition-colors"
-          aria-label="Toggle menu" aria-expanded="false">
-          <span class="block w-6 h-0.5 bg-tb-brown rounded-full"></span>
-          <span class="block w-6 h-0.5 bg-tb-brown rounded-full"></span>
-          <span class="block w-6 h-0.5 bg-tb-brown rounded-full"></span>
-        </button>
-
-        <nav id="main-nav"
-          class="hidden md:flex items-center gap-0 w-full md:w-auto order-3 md:order-none basis-full md:basis-auto bg-[#EEBB3B]/98 md:bg-transparent backdrop-blur-sm rounded-b-lg md:rounded-none -mx-4 px-4 md:mx-0 md:px-0"
-          aria-label="Main Navigation">
-          <ul class="flex flex-col md:flex-row items-center gap-3 md:gap-0 py-3 md:py-0 list-none m-0 p-0 font-sans">
-            <li class="border-r border-tb-brown/50 md:pr-3 md:pl-3 first:pl-0">
-              <a href="../../index.html" class="text-[#78350f] hover:text-tb-red transition-colors text-sm">Beranda</a>
-            </li>
-            <li class="border-r border-tb-brown/50 md:pr-3 md:pl-3">
-              <a href="../tentang-kami.html" class="text-[#78350f] hover:text-tb-red transition-colors text-sm">Tentang
-                Kami</a>
-            </li>
-            <li class="border-r border-tb-brown/50 md:pr-3 md:pl-3">
-              <a href="berita.html"
-                class="text-[#143D73] font-semibold pb-1 border-b-2 border-[#143D73] transition-colors text-sm"
-                aria-current="page">Berita</a>
-            </li>
-            <li class="border-r border-tb-brown/50 md:pr-3 md:pl-3">
-              <a href="../kunjungi-kami.html" class="text-[#78350f] hover:text-tb-red transition-colors text-sm">Kunjungi
-                Kami</a>
-            </li>
-            <li class="border-r border-tb-brown/50 md:pr-3 md:pl-3">
-              <a href="../agenda.html" class="text-[#78350f] hover:text-tb-red transition-colors text-sm">Agenda</a>
-            </li>
-            <li class="border-r border-tb-brown/50 md:pr-3 md:pl-3">
-              <a href="../kuliner.html" class="text-[#78350f] hover:text-tb-red transition-colors text-sm">Kuliner</a>
-            </li>
-            <li class="md:pr-0 md:pl-3">
-              <a href="../merchandise.html"
-                class="text-[#78350f] hover:text-tb-red transition-colors text-sm">Merchandise</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+     <div id="navbar-container"></div>
+      <script src="../../navbar.js"></script>
     <!-- Main content: ARTIKEL BERITA -->
     <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
       <h1 class="text-center text-[#1E459F] font-bold text-2xl sm:text-3xl md:text-4xl mb-8 md:mb-12">

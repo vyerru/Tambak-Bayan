@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Tambak Bayan GO-WEB - Koleksi Mural Budaya Lokal." />
+    <title>Tambak Bayan GO-WEB - Mural Budaya Lokal</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Geologica', 'system-ui', 'sans-serif'],
+                    },
+                },
+            },
+        };
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geologica:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(32px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page-title {
+            animation: fadeSlideUp 0.4s ease both;
+        }
+
+        /* ════════════════════════════════════════
+         VARIABEL — ubah di sini untuk resize foto
+      ════════════════════════════════════════ */
+        :root {
+            --photo-w: 500px;
+            --photo-h: 280px;
+            --overlap: 80px;
+            /* card putih overlap ke atas foto */
+        }
+
+        .card-list {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            /* Ruang bernapas logis antar kartu */
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        /* ════════════════════════════════════════
+         CARD WRAPPER
+      ════════════════════════════════════════ */
+        .mural-card {
+            position: relative;
+            overflow: visible;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            min-height: 180px;
+            animation: fadeSlideUp 0.6s ease both;
+            transition: transform 0.3s ease;
+        }
+
+        /* nth-child sampai 13 */
+        .mural-card:nth-child(1) {
+            animation-delay: 0.05s;
+        }
+
+        .mural-card:nth-child(2) {
+            animation-delay: 0.10s;
+        }
+
+        .mural-card:nth-child(3) {
+            animation-delay: 0.15s;
+        }
+
+        .mural-card:nth-child(4) {
+            animation-delay: 0.20s;
+        }
+
+        .mural-card:nth-child(5) {
+            animation-delay: 0.25s;
+        }
+
+        /* Background putih via ::before — tidak konflik dengan Tailwind */
+        .mural-card::before {
+            content: '';
+            position: absolute;
+            left: calc(var(--photo-w) - var(--overlap));
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 6px 28px rgba(0, 0, 0, 0.14);
+            transition: box-shadow 0.3s ease;
+            z-index: 0;
+        }
+
+        .mural-card:hover::before {
+            box-shadow: 0 18px 52px rgba(0, 0, 0, 0.22);
+        }
+
+        /* ════════════════════════════════════════
+         KOLOM KIRI — foto timbul
+      ════════════════════════════════════════ */
+        .card-photo-col {
+            position: relative;
+            z-index: 2;
+            flex-shrink: 0;
+            width: var(--photo-w);
+            /* Hapus margin-top: -40px; dan margin-bottom: -40px; */
+        }
+
+        .card-photo-col img {
+            display: block;
+            width: var(--photo-w);
+            height: var(--photo-h);
+            object-fit: cover;
+            object-position: center;
+            border-radius: 1rem;
+            box-shadow:
+                0 16px 48px rgba(0, 0, 0, 0.45),
+                0 4px 14px rgba(0, 0, 0, 0.26);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .mural-card:hover .card-photo-col img {
+            transform: scale(1.03);
+            box-shadow:
+                0 22px 60px rgba(0, 0, 0, 0.52),
+                0 6px 18px rgba(0, 0, 0, 0.32);
+        }
+
+        /* ════════════════════════════════════════
+         KOLOM KANAN — teks
+      ════════════════════════════════════════ */
+        .card-text-col {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            padding: 28px 32px 28px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        /* ════════════════════════════════════════
+         MOBILE ≤ 639px
+      ════════════════════════════════════════ */
+        @media (max-width: 639px) {
+            .card-list {
+                gap: 32px;
+                padding: 24px 0 32px;
+            }
+
+            .mural-card {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .mural-card::before {
+                left: 0;
+                right: 0;
+                top: 80px;
+                bottom: 0;
+                /* Menimpa bottom: 30px dari desktop */
+            }
+
+            .card-photo-col {
+                width: 100%;
+                margin-top: 0;
+                margin-bottom: 0;
+                padding: 0 16px;
+            }
+
+            .card-photo-col img {
+                width: 100%;
+                height: 200px;
+                border-radius: 0.875rem;
+            }
+
+            .card-text-col {
+                width: 100%;
+                padding: 16px 20px 24px;
+                word-break: break-word;
+                overflow-wrap: break-word;
+            }
+
+            .card-text-col p {
+                text-align: left !important;
+                hyphens: none !important;
+            }
+        }
+
+        /* ════════════════════════════════════════
+         TABLET 640px – 767px
+      ════════════════════════════════════════ */
+        @media (min-width: 640px) and (max-width: 767px) {
+            :root {
+                --photo-w: 220px;
+                --photo-h: 220px;
+                --overlap: 50px;
+            }
+
+            .card-text-col {
+                padding: 20px 20px 20px 16px;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased text-gray-900 min-h-screen">
+    <main class="w-full min-h-screen overflow-x-hidden"
+        style="background: linear-gradient(180deg, #EEBB3B 0%, #e0a020 30%, #c96418 65%, #B92E2B 100%);">
+
+        <!-- NAVBAR -->
+        <div id="navbar-container"></div>
+        <script src="../../navbar.js"></script>
+
+        <!-- JUDUL -->
+        <section class="w-full pt-10 pb-2 text-center px-5">
+            <h1
+                class="page-title font-bold text-[#1E459F] text-2xl sm:text-3xl md:text-4xl tracking-wide drop-shadow-sm">
+                Kehidupan Sehari-Hari
+            </h1>
+            <div class="mx-auto mt-3 w-16 h-1 rounded-full bg-[#1E459F]/60"></div>
+        </section>
+
+        <!-- DAFTAR KARTU -->
+        <section class="w-full px-6 sm:px-10 md:px-16 lg:px-20" aria-label="Koleksi Mural Budaya Lokal">
+            <div class="max-w-4xl mx-auto card-list">
+
+                <!--
+            ════════════════════════════════════
+            CARA MENGISI PLACEHOLDER:
+            1. Ganti src="..." dengan path aset gambar
+            2. Ganti alt="..." dengan deskripsi singkat gambar
+            3. Ganti "Judul Karya N" dengan judul karya
+            4. Ganti "Nama Seniman" dengan nama seniman/tim
+            5. Ganti "Tahun" dengan tahun karya
+            6. Ganti teks deskripsi dengan narasi karya
+            ════════════════════════════════════
+          -->
+
+                <!-- Kartu 1 -->
+                <div class="mural-card">
+                    <div class="card-photo-col">
+                        <img src="../../assets/koleksi-mural/kehidupan-sehari-hari/KE_1.JPG" alt="Mural Budaya Lokal 1"
+                            loading="eager" />
+                    </div>
+                    <div class="card-text-col">
+                        <h2 class="font-bold text-gray-900 text-xl sm:text-2xl leading-snug">Dari Kayu Menjadi Kehidupan</h2>
+                        <p class="text-sm text-gray-400 font-medium">Pelukis &nbsp;&bull;&nbsp; 2024</p>
+                        <p class="text-gray-700 text-sm sm:text-[0.95rem] leading-relaxed text-justify hyphens-auto">
+                            Merepresentasikan aktivitas warga pada masa lampau yang mayoritas pekerjanya yaitu tukang kayu. 
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Kartu 2 -->
+                <div class="mural-card">
+                    <div class="card-photo-col">
+                        <img src="../../assets/koleksi-mural/kehidupan-sehari-hari/KE_2.jpg" alt="Mural Budaya Lokal 2"
+                            loading="lazy" />
+                    </div>
+                    <div class="card-text-col">
+                        <h2 class="font-bold text-gray-900 text-xl sm:text-2xl leading-snug">Karya Kelompok Mahasiswa UC</h2>
+                        <p class="text-sm text-gray-400 font-medium">Mahasiswa Universitas Ciputra &nbsp;&bull;&nbsp; 2024</p>
+                        <p class="text-gray-700 text-sm sm:text-[0.95rem] leading-relaxed text-justify hyphens-auto">
+                            Mural sebagai bentuk perwujudan dan harapan lingkungan yang harmonis dari variasi gambar secara tersirat.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Kartu 3 -->
+                <div class="mural-card">
+                    <div class="card-photo-col">
+                        <img src="../../assets/koleksi-mural/kehidupan-sehari-hari/KE_3.jpg" alt="Mural Budaya Lokal 3"
+                            loading="lazy" />
+                    </div>
+                    <div class="card-text-col">
+                        <h2 class="font-bold text-gray-900 text-xl sm:text-2xl leading-snug">Karya Kelompok Mahasiswa & Permintaan Warga</h2>
+                        <p class="text-sm text-gray-400 font-medium">Mahasiswa Universitas Ciputra &nbsp;&bull;&nbsp; 2024</p>
+                        <p class="text-gray-700 text-sm sm:text-[0.95rem] leading-relaxed text-justify hyphens-auto">
+                            Menunjukkan kegiatan warga Kampung Tambak Bayan yang sedang merayakan Imlek dengan ciri khasnya yaitu barongsai dan makan besar bersama keluarga maupun kerabat.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Kartu 4 -->
+                <div class="mural-card">
+                    <div class="card-photo-col">
+                        <img src="../../assets/koleksi-mural/kehidupan-sehari-hari/KE_4.jpg" alt="Mural Budaya Lokal 4"
+                            loading="lazy" />
+                    </div>
+                    <div class="card-text-col">
+                        <h2 class="font-bold text-gray-900 text-xl sm:text-2xl leading-snug">Karya Kelompok Mahasiswa & Permintaan Warga</h2>
+                        <p class="text-sm text-gray-400 font-medium">Mahasiswa Universitas Ciputra &nbsp;&bull;&nbsp; 2024</p>
+                        <p class="text-gray-700 text-sm sm:text-[0.95rem] leading-relaxed text-justify hyphens-auto">
+                            Menggambarkan kehidupan sehari-hari yang dilakukan yaitu berjualan berbagai macam kebutuhan. Hal ini juga menunjukkan bahwa sebagian warga Kampung Tambak Bayan merupakan pedagang.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Kartu 5 -->
+                <div class="mural-card">
+                    <div class="card-photo-col">
+                        <img src="../../assets/koleksi-mural/kehidupan-sehari-hari/KE_5.png" alt="Mural Budaya Lokal 5"
+                            loading="lazy" />
+                    </div>
+                    <div class="card-text-col">
+                        <h2 class="font-bold text-gray-900 text-xl sm:text-2xl leading-snug">Karya kelompok mahasiswa Universitas Ciputra</h2>
+                        <p class="text-sm text-gray-400 font-medium">Mahasiswa Universitas Ciputra &nbsp;&bull;&nbsp; 2024</p>
+                        <p class="text-gray-700 text-sm sm:text-[0.95rem] leading-relaxed text-justify hyphens-auto">
+                            Digambarkan sebagai harapan agar warga Tambak Bayan tetap seger (segar) dan waras (sehat), atau fisik dan mental dalam keadaan baik.
+                        </p>
+                    </div>
+                </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="w-full bg-[#143D73] text-[#DEA921] py-10 md:py-14 px-4 sm:px-6 lg:px-8 mt-10">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-start md:justify-between gap-8 md:gap-12">
+                <div class="flex flex-col gap-4 md:gap-5">
+                    <img src="../../assets/beranda/logo_footer.png" alt="Tambak Bayan GO-WEB"
+                        class="h-10 sm:h-12 md:h-14 object-contain" />
+                    <div class="flex items-center gap-4">
+                        <a href="https://www.instagram.com/institutsenitambakbayan/" target="_blank"
+                            rel="noopener noreferrer"
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-[#DEA921]/10 hover:bg-[#DEA921]/20 transition-colors"
+                            aria-label="Instagram">
+                            <i class="fab fa-instagram text-lg"></i>
+                        </a>
+                        <a href="mailto:contact@tambakbayan.com"
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-[#DEA921]/10 hover:bg-[#DEA921]/20 transition-colors"
+                            aria-label="Email">
+                            <i class="fas fa-envelope text-lg"></i>
+                        </a>
+                        <a href="https://maps.app.goo.gl/mW5gzKq7QU7jjZYP8" target="_blank" rel="noopener noreferrer"
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-[#DEA921]/10 hover:bg-[#DEA921]/20 transition-colors"
+                            aria-label="Lokasi">
+                            <i class="fas fa-location-dot text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                <blockquote class="md:max-w-[55%] lg:max-w-[50%]">
+                    <p class="text-[#DEA921]/95 text-sm sm:text-base leading-relaxed">
+                        "Semua proses akan menemukan keindahannya pada waktu yang tepat.
+                        Selama mural tetap hidup di dinding dan warga terus membuka meja
+                        bagi para tamu, Tambak Bayan akan terus bersuara"
+                        <cite class="block mt-2 font-semibold not-italic text-[#CF2A2A]">— Suseno Karja</cite>
+                    </p>
+                </blockquote>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        (function () {
+            var toggle = document.getElementById('menu-toggle');
+            var nav = document.getElementById('main-nav');
+            if (!toggle || !nav) return;
+            toggle.addEventListener('click', function () {
+                var expanded = toggle.getAttribute('aria-expanded') === 'true';
+                toggle.setAttribute('aria-expanded', String(!expanded));
+                nav.classList.toggle('hidden');
+            });
+            document.querySelectorAll('#main-nav a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    toggle.setAttribute('aria-expanded', 'false');
+                    nav.classList.add('hidden');
+                });
+            });
+        })();
+    </script>
+</body>
+
+</html>

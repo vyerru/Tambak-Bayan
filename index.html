@@ -1,454 +1,377 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Tambak Bayan GO-WEB - Portal resmi Desa Tambak Bayan yang menampilkan informasi tentang kuliner, agenda, berita, dan merchandise lokal."
-    />
-    <title>Tambak Bayan GO-WEB - Beranda</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Geologica', 'system-ui', 'sans-serif'],
-              /* Logo: ganti dengan image/SVG logo bila file font Sex Pistols tersedia */
-              logo: ['Impact', 'sans-serif'],
-            },
-            colors: {
-              'gradient-yellow': '#EEBB3B',
-              'gradient-red': '#B92E2B',
-              'tb-blue': '#1E459F',
-              'tb-red': '#CF2A2A',
-              'tb-beige': '#E1DCCA',
-              'tb-brown': '#78350f',
-              'sunset-gold': '#EEBB3B',
-              'sunset-red': '#B92E2B',
-              'footer-blue': '#143D73',
-              'footer-gold': '#DEA921',
-            },
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Tambak Bayan GO-WEB - Portal resmi Desa Tambak Bayan yang menampilkan informasi tentang kuliner, agenda, berita, dan merchandise lokal." />
+  <title>Tambak Bayan GO-WEB - Beranda</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Geologica', 'system-ui', 'sans-serif'],
+            /* Logo: ganti dengan image/SVG logo bila file font Sex Pistols tersedia */
+            logo: ['Impact', 'sans-serif'],
+          },
+          colors: {
+            'gradient-yellow': '#EEBB3B',
+            'gradient-red': '#B92E2B',
+            'tb-blue': '#1E459F',
+            'tb-red': '#CF2A2A',
+            'tb-beige': '#E1DCCA',
+            'tb-brown': '#78350f',
+            'sunset-gold': '#EEBB3B',
+            'sunset-red': '#B92E2B',
+            'footer-blue': '#143D73',
+            'footer-gold': '#DEA921',
           },
         },
-      };
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Geologica:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <!-- Lucide Icons (optional enhancement) -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-    <style>
-      /* Watermark banner styles (repeating welcome text)
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geologica:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+    rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Lucide Icons (optional enhancement) -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    /* Watermark banner styles (repeating welcome text)
          - positioned behind floating photos
          - constrained vertically so it stops above the CTA
          - responsive sizing
       */
+    .welcome-watermark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      /* leave space at bottom so watermark doesn't overlap CTA */
+      bottom: 140px;
+      pointer-events: none;
+      overflow: visible;
+    }
+
+    .welcome-watermark .label {
+      position: absolute;
+      left: 0;
+      top: 6%;
+      transform: none;
+      width: 100%;
+      max-width: none;
+      padding: 0 1rem;
+      /* small horizontal padding so text doesn't touch edge */
+      pointer-events: none;
+      overflow: visible;
+    }
+
+    .welcome-watermark .label .text-wrapper {
+      display: block;
+      white-space: nowrap;
+      text-align: left;
+      font-family: 'Geologica', system-ui, Helvetica, Arial, sans-serif;
+      font-weight: 800;
+      color: #b92e2b;
+      opacity: 0.50;
+      /* increased opacity */
+      font-size: clamp(22px, 5vw, 72px);
+      letter-spacing: 0.5px;
+      line-height: 1;
+      margin-bottom: 1rem;
+      /* vertical spacing between stacked rows */
+      overflow: visible;
+    }
+
+    /* reduce size/spacing on small screens */
+    @media (max-width: 640px) {
       .welcome-watermark {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        /* leave space at bottom so watermark doesn't overlap CTA */
-        bottom: 140px;
-        pointer-events: none;
-        overflow: visible;
+        bottom: 120px;
       }
 
       .welcome-watermark .label {
-        position: absolute;
-        left: 0;
         top: 6%;
-        transform: none;
-        width: 100%;
-        max-width: none;
-        padding: 0 1rem; /* small horizontal padding so text doesn't touch edge */
-        pointer-events: none;
-        overflow: visible;
+        width: 150%;
       }
 
       .welcome-watermark .label .text-wrapper {
-        display: block;
-        white-space: nowrap;
-        text-align: left;
-        font-family: 'Geologica', system-ui, Helvetica, Arial, sans-serif;
-        font-weight: 800;
-        color: #b92e2b;
-        opacity: 0.50; /* increased opacity */
-        font-size: clamp(22px, 5vw, 72px);
-        letter-spacing: 0.5px;
-        line-height: 1;
-        margin-bottom: 1rem; /* vertical spacing between stacked rows */
-        overflow: visible;
+        font-size: clamp(16px, 6vw, 36px);
+        margin-bottom: 0.8rem;
       }
+    }
+  </style>
+</head>
 
-      /* reduce size/spacing on small screens */
-      @media (max-width: 640px) {
-        .welcome-watermark { bottom: 120px; }
-        .welcome-watermark .label { top: 6%; width: 150%; }
-        .welcome-watermark .label .text-wrapper { font-size: clamp(16px, 6vw, 36px); margin-bottom: 0.8rem; }
-      }
-    </style>
-  </head>
-  <body class="font-sans antialiased text-gray-900 min-h-screen">
-    <main class="w-full min-h-screen overflow-x-hidden" style="background: linear-gradient(180deg, #EEBB3B 0%, #e5a82f 33%, #dc9428 66%, #B92E2B 100%);">
-      <!-- Header: navigasi ramping, Geologica, #78350f, garis pemisah vertikal tipis -->
-      <header
-        class="w-full bg-[#EEBB3B] border-b border-[#B92E2B]/20 sticky top-0 z-50 shadow-sm"
-      >
-        <div
-          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 md:py-4 flex flex-wrap items-center justify-between gap-3"
-        >
-          <a href="#beranda" class="flex-shrink-0 inline-flex items-center">
-            <!-- Logo image from assets/beranda; replace filename if different -->
-            <img src="assets/beranda/logo.png" alt="Tambak Bayan logo" class="h-10 sm:h-12 md:h-14 object-contain" />
-            <span class="sr-only">Tambak Bayan GO-WEB</span>
-          </a>
-          <button
-            id="menu-toggle"
-            type="button"
-            class="md:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-[#B92E2B]/10 transition-colors"
-            aria-label="Toggle menu"
-            aria-expanded="false"
-          >
-            <span class="block w-6 h-0.5 bg-tb-brown rounded-full"></span>
-            <span class="block w-6 h-0.5 bg-tb-brown rounded-full"></span>
-            <span class="block w-6 h-0.5 bg-tb-brown rounded-full"></span>
-          </button>
+<body class="font-sans antialiased text-gray-900 min-h-screen">
+  <main class="w-full min-h-screen overflow-x-hidden"
+    style="background: linear-gradient(180deg, #EEBB3B 0%, #e5a82f 33%, #dc9428 66%, #B92E2B 100%);">
+    <!-- Header: navigasi ramping, Geologica, #78350f, garis pemisah vertikal tipis -->
+    <div id="navbar-container"></div>
 
-          <nav
-            id="main-nav"
-            class="hidden md:flex items-center gap-0 w-full md:w-auto order-3 md:order-none basis-full md:basis-auto bg-[#EEBB3B]/98 md:bg-transparent backdrop-blur-sm rounded-b-lg md:rounded-none -mx-4 px-4 md:mx-0 md:px-0"
-            aria-label="Main Navigation"
-          >
-            <ul
-              class="flex flex-col md:flex-row items-center gap-3 md:gap-0 py-3 md:py-0 list-none m-0 p-0 font-sans"
-            >
-              <li class="border-r border-tb-brown/50 md:pr-3 md:pl-3 first:pl-0">
-                <a href="#beranda" class="text-[#78350f] font-semibold hover:text-tb-red transition-colors text-sm" aria-current="page">Beranda</a>
-              </li>
-              <li class="border-r border-tb-brown/50 md:pr-3 md:pl-3">
-                <a href="pages/tentang-kami.html" class="text-[#78350f] hover:text-tb-red transition-colors text-sm">Tentang Kami</a>
-              </li>
-              <li class="border-r border-tb-brown/50 md:pr-3 md:pl-3">
-                <a href="pages/berita/berita_1.html" class="text-[#78350f] hover:text-tb-red transition-colors text-sm">Berita</a>
-              </li>
-              <li class="border-r border-tb-brown/50 md:pr-3 md:pl-3">
-                <a href="pages/kunjungi-kami.html" class="text-[#78350f] hover:text-tb-red transition-colors text-sm">Kunjungi Kami</a>
-              </li>
-              <li class="border-r border-tb-brown/50 md:pr-3 md:pl-3">
-                <a href="pages/agenda.html" class="text-[#78350f] hover:text-tb-red transition-colors text-sm">Agenda</a>
-              </li>
-              <li class="border-r border-tb-brown/50 md:pr-3 md:pl-3">
-                <a href="pages/kuliner.html" class="text-[#78350f] hover:text-tb-red transition-colors text-sm">Kuliner</a>
-              </li>
-              <li class="md:pr-0 md:pl-3">
-                <a href="pages/merchandise.html" class="text-[#78350f] hover:text-tb-red transition-colors text-sm">Merchandise</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </header>
+    <script src="navbar.js"></script>
 
-      <!-- Hero Section: border-radius besar (rounded-[40px]) seperti Figma -->
-      <section
-        class="relative w-full overflow-hidden px-4 sm:px-6 pt-4 pb-0"
-        aria-label="Photo slideshow"
-      >
-        <div class="max-w-7xl mx-auto">
-          <div class="relative aspect-[21/9] sm:aspect-[3/1] md:aspect-[21/8] overflow-hidden rounded-[40px]">
-            <div class="slides-track flex absolute inset-0 transition-transform duration-500 ease-out" style="width: 600%;">
-              <div class="slide flex-shrink-0 w-1/6 relative h-full">
-                <img
-                  src="assets/beranda/Beranda_1.png"
-                  alt="Beranda 1"
-                  class="absolute inset-0 w-full h-full object-cover object-center"
-                  loading="lazy"
-                />
-                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent py-3 px-4 text-center">
-                  <p class="text-white/90 text-xs sm:text-sm">
-                    Sumber: <a href="https://instagram.com/fokusuar.unair" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">instagram.com/fokusuar.unair</a>
-                  </p>
-                </div>
-              </div>
-
-              <div class="slide flex-shrink-0 w-1/6 relative h-full">
-                <img
-                  src="assets/beranda/Beranda_2.png"
-                  alt="Beranda 2"
-                  class="absolute inset-0 w-full h-full object-cover object-center"
-                  loading="lazy"
-                />
-                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent py-3 px-4 text-center">
-                  <p class="text-white/90 text-xs sm:text-sm">
-                    Sumber: <a href="https://instagram.com/fokusuar.unair" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">instagram.com/fokusuar.unair</a>
-                  </p>
-                </div>
-              </div>
-
-              <div class="slide flex-shrink-0 w-1/6 relative h-full">
-                <img
-                  src="assets/beranda/Beranda_3.png"
-                  alt="Beranda 3"
-                  class="absolute inset-0 w-full h-full object-cover object-center"
-                  loading="lazy"
-                />
-                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent py-3 px-4 text-center">
-                  <p class="text-white/90 text-xs sm:text-sm">
-                    Sumber: <a href="https://instagram.com/fokusuar.unair" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">instagram.com/fokusuar.unair</a>
-                  </p>
-                </div>
-              </div>
-
-              <div class="slide flex-shrink-0 w-1/6 relative h-full">
-                <img
-                  src="assets/beranda/Beranda_4.png"
-                  alt="Beranda 4"
-                  class="absolute inset-0 w-full h-full object-cover object-center"
-                  loading="lazy"
-                />
-                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent py-3 px-4 text-center">
-                  <p class="text-white/90 text-xs sm:text-sm">
-                    Sumber: <a href="https://instagram.com/fokusuar.unair" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">instagram.com/fokusuar.unair</a>
-                  </p>
-                </div>
-              </div>
-
-              <div class="slide flex-shrink-0 w-1/6 relative h-full">
-                <img
-                  src="assets/beranda/Beranda_5.png"
-                  alt="Beranda 5"
-                  class="absolute inset-0 w-full h-full object-cover object-center"
-                  loading="lazy"
-                />
-                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent py-3 px-4 text-center">
-                  <p class="text-white/90 text-xs sm:text-sm">
-                    Sumber: <a href="https://instagram.com/fokusuar.unair" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">instagram.com/fokusuar.unair</a>
-                  </p>
-                </div>
-              </div>
-    
-              <div class="slide flex-shrink-0 w-1/6 relative h-full">
-                <img
-                  src="assets/beranda/Beranda_6.png"
-                  alt="Beranda 6"
-                  class="absolute inset-0 w-full h-full object-cover object-center"
-                  loading="lazy"
-                />
-                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent py-3 px-4 text-center">
-                  <p class="text-white/90 text-xs sm:text-sm">
-                    Sumber: <a href="https://instagram.com/fokusuar.unair" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">instagram.com/fokusuar.unair</a>
-                  </p>
-                </div>
+    <!-- Hero Section: border-radius besar (rounded-[40px]) seperti Figma -->
+    <section class="relative w-full overflow-hidden px-4 sm:px-6 pt-4 pb-0" aria-label="Photo slideshow">
+      <div class="max-w-7xl mx-auto">
+        <div class="relative aspect-[21/9] sm:aspect-[3/1] md:aspect-[21/8] overflow-hidden rounded-[40px]">
+          <div class="slides-track flex absolute inset-0 transition-transform duration-500 ease-out"
+            style="width: 600%;">
+            <div class="slide flex-shrink-0 w-1/6 relative h-full">
+              <img src="assets/beranda/Beranda_1.png" alt="Beranda 1"
+                class="absolute inset-0 w-full h-full object-cover object-center" loading="lazy" />
+              <div
+                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent py-3 px-4 text-center">
+                <p class="text-white/90 text-xs sm:text-sm">
+                  Sumber: <a href="https://instagram.com/fokusuar.unair" target="_blank" rel="noopener noreferrer"
+                    class="underline hover:text-white">instagram.com/fokusuar.unair</a>
+                </p>
               </div>
             </div>
-            <button
-              type="button"
-              class="slide-prev absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 hover:bg-white flex items-center justify-center text-tb-blue shadow-lg transition-all"
-              aria-label="Foto sebelumnya"
-            >
-              <i class="fas fa-chevron-left text-lg"></i>
-            </button>
-            <button
-              type="button"
-              class="slide-next absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 hover:bg-white flex items-center justify-center text-tb-blue shadow-lg transition-all"
-              aria-label="Foto berikutnya"
-            >
-              <i class="fas fa-chevron-right text-lg"></i>
-            </button>
+
+            <div class="slide flex-shrink-0 w-1/6 relative h-full">
+              <img src="assets/beranda/Beranda_2.png" alt="Beranda 2"
+                class="absolute inset-0 w-full h-full object-cover object-center" loading="lazy" />
+              <div
+                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent py-3 px-4 text-center">
+                <p class="text-white/90 text-xs sm:text-sm">
+                  Sumber: <a href="https://instagram.com/fokusuar.unair" target="_blank" rel="noopener noreferrer"
+                    class="underline hover:text-white">instagram.com/fokusuar.unair</a>
+                </p>
+              </div>
+            </div>
+
+            <div class="slide flex-shrink-0 w-1/6 relative h-full">
+              <img src="assets/beranda/Beranda_3.png" alt="Beranda 3"
+                class="absolute inset-0 w-full h-full object-cover object-center" loading="lazy" />
+              <div
+                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent py-3 px-4 text-center">
+                <p class="text-white/90 text-xs sm:text-sm">
+                  Sumber: <a href="https://instagram.com/fokusuar.unair" target="_blank" rel="noopener noreferrer"
+                    class="underline hover:text-white">instagram.com/fokusuar.unair</a>
+                </p>
+              </div>
+            </div>
+
+            <div class="slide flex-shrink-0 w-1/6 relative h-full">
+              <img src="assets/beranda/Beranda_4.png" alt="Beranda 4"
+                class="absolute inset-0 w-full h-full object-cover object-center" loading="lazy" />
+              <div
+                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent py-3 px-4 text-center">
+                <p class="text-white/90 text-xs sm:text-sm">
+                  Sumber: <a href="https://instagram.com/fokusuar.unair" target="_blank" rel="noopener noreferrer"
+                    class="underline hover:text-white">instagram.com/fokusuar.unair</a>
+                </p>
+              </div>
+            </div>
+
+            <div class="slide flex-shrink-0 w-1/6 relative h-full">
+              <img src="assets/beranda/Beranda_5.png" alt="Beranda 5"
+                class="absolute inset-0 w-full h-full object-cover object-center" loading="lazy" />
+              <div
+                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent py-3 px-4 text-center">
+                <p class="text-white/90 text-xs sm:text-sm">
+                  Sumber: <a href="https://instagram.com/fokusuar.unair" target="_blank" rel="noopener noreferrer"
+                    class="underline hover:text-white">instagram.com/fokusuar.unair</a>
+                </p>
+              </div>
+            </div>
+
+            <div class="slide flex-shrink-0 w-1/6 relative h-full">
+              <img src="assets/beranda/Beranda_6.png" alt="Beranda 6"
+                class="absolute inset-0 w-full h-full object-cover object-center" loading="lazy" />
+              <div
+                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent py-3 px-4 text-center">
+                <p class="text-white/90 text-xs sm:text-sm">
+                  Sumber: <a href="https://instagram.com/fokusuar.unair" target="_blank" rel="noopener noreferrer"
+                    class="underline hover:text-white">instagram.com/fokusuar.unair</a>
+                </p>
+              </div>
+            </div>
           </div>
-          <div class="slide-indicators flex justify-center gap-2 py-3" role="tablist" aria-label="Indikator slide">
-            <button type="button" class="indicator w-2 h-2 rounded-full bg-tb-blue/60 hover:bg-tb-blue transition-colors indicator-active" aria-label="Slide 1" role="tab"></button>
-            <button type="button" class="indicator w-2 h-2 rounded-full bg-tb-blue/30 hover:bg-tb-blue transition-colors" aria-label="Slide 2" role="tab"></button>
-            <button type="button" class="indicator w-2 h-2 rounded-full bg-tb-blue/30 hover:bg-tb-blue transition-colors" aria-label="Slide 3" role="tab"></button>
-            <button type="button" class="indicator w-2 h-2 rounded-full bg-tb-blue/30 hover:bg-tb-blue transition-colors" aria-label="Slide 4" role="tab"></button>
-            <button type="button" class="indicator w-2 h-2 rounded-full bg-tb-blue/30 hover:bg-tb-blue transition-colors" aria-label="Slide 5" role="tab"></button>
-            <button type="button" class="indicator w-2 h-2 rounded-full bg-tb-blue/30 hover:bg-tb-blue transition-colors" aria-label="Slide 6" role="tab"></button>
-          </div>
+          <button type="button"
+            class="slide-prev absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 hover:bg-white flex items-center justify-center text-tb-blue shadow-lg transition-all"
+            aria-label="Foto sebelumnya">
+            <i class="fas fa-chevron-left text-lg"></i>
+          </button>
+          <button type="button"
+            class="slide-next absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 hover:bg-white flex items-center justify-center text-tb-blue shadow-lg transition-all"
+            aria-label="Foto berikutnya">
+            <i class="fas fa-chevron-right text-lg"></i>
+          </button>
         </div>
-      </section>
+        <div class="slide-indicators flex justify-center gap-2 py-3" role="tablist" aria-label="Indikator slide">
+          <button type="button"
+            class="indicator w-2 h-2 rounded-full bg-tb-blue/60 hover:bg-tb-blue transition-colors indicator-active"
+            aria-label="Slide 1" role="tab"></button>
+          <button type="button" class="indicator w-2 h-2 rounded-full bg-tb-blue/30 hover:bg-tb-blue transition-colors"
+            aria-label="Slide 2" role="tab"></button>
+          <button type="button" class="indicator w-2 h-2 rounded-full bg-tb-blue/30 hover:bg-tb-blue transition-colors"
+            aria-label="Slide 3" role="tab"></button>
+          <button type="button" class="indicator w-2 h-2 rounded-full bg-tb-blue/30 hover:bg-tb-blue transition-colors"
+            aria-label="Slide 4" role="tab"></button>
+          <button type="button" class="indicator w-2 h-2 rounded-full bg-tb-blue/30 hover:bg-tb-blue transition-colors"
+            aria-label="Slide 5" role="tab"></button>
+          <button type="button" class="indicator w-2 h-2 rounded-full bg-tb-blue/30 hover:bg-tb-blue transition-colors"
+            aria-label="Slide 6" role="tab"></button>
+        </div>
+      </div>
+    </section>
 
-      <!-- Slogan Section: teks #CF2A2A, font-bold, text-3xl/4xl, tanpa celah -->
-      <section
-        class="w-full py-6 md:py-10 px-4 text-center"
-        id="beranda"
-      >
-        <h1
-          class="max-w-4xl mx-auto font-bold text-tb-red text-2xl sm:text-3xl md:text-4xl leading-tight"
-        >
-          Tanah Kami, Hak Kami, Suara Kami.
-        </h1>
-      </section>
+    <!-- Slogan Section: teks #CF2A2A, font-bold, text-3xl/4xl, tanpa celah -->
+    <section class="w-full py-6 md:py-10 px-4 text-center" id="beranda">
+      <h1 class="max-w-4xl mx-auto font-bold text-tb-red text-2xl sm:text-3xl md:text-4xl leading-tight">
+        Tanah Kami, Hak Kami, Suara Kami.
+      </h1>
+    </section>
 
-      <!-- Welcome Section: watermark pattern rapat (merah gelap transparan), 4 foto melayang dengan rotasi berbeda -->
-      <section
-        class="relative w-full overflow-hidden py-10 md:py-16 px-4 sm:px-6"
-      >
-        <div class="welcome-watermark absolute inset-0 overflow-hidden pointer-events-none select-none" aria-hidden="true">
-          <div class="label" role="banner" aria-label="Welcome banner">
-            <p class="text-wrapper">SELAMAT DATANG DI TAMBAK BAYAN SELAMAT DATANG DI TAMBAK BAYAN SELAMAT DATANG DI TAMBAK BAYAN SELAMAT DATANG DI TAMBAK BAYAN</p>
-            <p class="text-wrapper">SELAMAT DATANG DI TAMBAK BAYAN SELAMAT DATANG DI TAMBAK BAYAN SELAMAT DATANG DI TAMBAK BAYAN SELAMAT DATANG DI TAMBAK BAYAN</p>
-            <p class="text-wrapper">SELAMAT DATANG DI TAMBAK BAYAN SELAMAT DATANG DI TAMBAK BAYAN SELAMAT DATANG DI TAMBAK BAYAN SELAMAT DATANG DI TAMBAK BAYAN</p>
-            <p class="text-wrapper">SELAMAT DATANG DI TAMBAK BAYAN SELAMAT DATANG DI TAMBAK BAYAN SELAMAT DATANG DI TAMBAK BAYAN SELAMAT DATANG DI TAMBAK BAYAN</p>
-          </div>
+    <!-- Welcome Section: watermark pattern rapat (merah gelap transparan), 4 foto melayang dengan rotasi berbeda -->
+    <section class="relative w-full overflow-hidden py-10 md:py-16 px-4 sm:px-6">
+      <div class="welcome-watermark absolute inset-0 overflow-hidden pointer-events-none select-none"
+        aria-hidden="true">
+        <div class="label" role="banner" aria-label="Welcome banner">
+          <p class="text-wrapper">SELAMAT DATANG DI TAMBAK BAYAN SELAMAT DATANG DI TAMBAK BAYAN SELAMAT DATANG DI TAMBAK
+            BAYAN SELAMAT DATANG DI TAMBAK BAYAN</p>
+          <p class="text-wrapper">SELAMAT DATANG DI TAMBAK BAYAN SELAMAT DATANG DI TAMBAK BAYAN SELAMAT DATANG DI TAMBAK
+            BAYAN SELAMAT DATANG DI TAMBAK BAYAN</p>
+          <p class="text-wrapper">SELAMAT DATANG DI TAMBAK BAYAN SELAMAT DATANG DI TAMBAK BAYAN SELAMAT DATANG DI TAMBAK
+            BAYAN SELAMAT DATANG DI TAMBAK BAYAN</p>
+          <p class="text-wrapper">SELAMAT DATANG DI TAMBAK BAYAN SELAMAT DATANG DI TAMBAK BAYAN SELAMAT DATANG DI TAMBAK
+            BAYAN SELAMAT DATANG DI TAMBAK BAYAN</p>
+        </div>
+      </div>
+
+      <div class="relative z-10 max-w-6xl mx-auto">
+        <div class="relative min-h-[160px] sm:min-h-[200px] md:min-h-[260px] mb-8 md:mb-12">
+          <img src="assets/beranda/Beranda_Elemen 4.png" alt=""
+            class="absolute w-24 h-32 sm:w-28 sm:h-36 md:w-36 md:h-44 object-cover rounded shadow-lg rotate-[-5deg] top-0 left-0 md:left-4 border-2 border-[#B92E2B]/30"
+            loading="lazy" />
+          <img src="assets/beranda/Beranda_Elemen 1.png" alt=""
+            class="absolute w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 object-cover rounded-full shadow-lg rotate-[6deg] top-2 left-1/2 -translate-x-1/2 md:left-[45%] md:translate-x-0 border-2 border-[#B92E2B]/30"
+            loading="lazy" />
+          <img src="assets/beranda/Beranda_Elemen 2.png" alt=""
+            class="absolute w-16 h-20 sm:w-20 sm:h-24 md:w-24 md:h-28 object-cover rounded shadow-lg rotate-[2deg] top-0 right-2 md:right-8 border-2 border-[#B92E2B]/30"
+            loading="lazy" />
+          <img src="assets/beranda/Beranda_Elemen 3.png" alt=""
+            class="absolute w-20 h-16 sm:w-24 sm:h-20 md:w-28 md:h-24 object-cover rounded shadow-lg rotate-[-8deg] bottom-0 right-4 md:right-16 border-2 border-[#B92E2B]/30"
+            loading="lazy" />
         </div>
 
-        <div class="relative z-10 max-w-6xl mx-auto">
-          <div class="relative min-h-[160px] sm:min-h-[200px] md:min-h-[260px] mb-8 md:mb-12">
-            <img
-              src="assets/beranda/Beranda_Elemen 4.png"
-              alt=""
-              class="absolute w-24 h-32 sm:w-28 sm:h-36 md:w-36 md:h-44 object-cover rounded shadow-lg rotate-[-5deg] top-0 left-0 md:left-4 border-2 border-[#B92E2B]/30"
-              loading="lazy"
-            />
-            <img
-              src="assets/beranda/Beranda_Elemen 1.png"
-              alt=""
-              class="absolute w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 object-cover rounded-full shadow-lg rotate-[6deg] top-2 left-1/2 -translate-x-1/2 md:left-[45%] md:translate-x-0 border-2 border-[#B92E2B]/30"
-              loading="lazy"
-            />
-            <img
-              src="assets/beranda/Beranda_Elemen 2.png"
-              alt=""
-              class="absolute w-16 h-20 sm:w-20 sm:h-24 md:w-24 md:h-28 object-cover rounded shadow-lg rotate-[2deg] top-0 right-2 md:right-8 border-2 border-[#B92E2B]/30"
-              loading="lazy"
-            />
-            <img
-              src="assets/beranda/Beranda_Elemen 3.png"
-              alt=""
-              class="absolute w-20 h-16 sm:w-24 sm:h-20 md:w-28 md:h-24 object-cover rounded shadow-lg rotate-[-8deg] bottom-0 right-4 md:right-16 border-2 border-[#B92E2B]/30"
-              loading="lazy"
-            />
-          </div>
+        <div class="relative z-20 text-center">
+          <a href="pages/tentang-kami.html"
+            class="inline-block px-8 py-4 md:px-12 md:py-5 rounded-full bg-[#B92E2B] text-[#EEBB3B] font-semibold text-base md:text-lg shadow-lg hover:bg-[#5c2908] focus:outline-none focus:ring-2 focus:ring-tb-beige transition-all">
+            Yuk Kenali Tambak Bayan!
+          </a>
+        </div>
+      </div>
+    </section>
 
-          <div class="relative z-20 text-center">
-            <a
-              href="pages/tentang-kami.html"
-              class="inline-block px-8 py-4 md:px-12 md:py-5 rounded-full bg-[#B92E2B] text-[#EEBB3B] font-semibold text-base md:text-lg shadow-lg hover:bg-[#5c2908] focus:outline-none focus:ring-2 focus:ring-tb-beige transition-all"
-            >
-              Yuk Kenali Tambak Bayan!
+    <!-- Chinese Greetings: susun organik (tidak kaku grid), variasi kuning/oranye gelap, background merah -->
+    <section class="relative w-full py-14 md:py-20 px-6 sm:px-8 min-h-[200px]"
+      aria-label="Sapaan dalam bahasa Mandarin">
+      <div class="max-w-5xl mx-auto relative h-full min-h-[180px]">
+        <span
+          class="absolute top-[5%] left-[8%] font-semibold text-xl sm:text-2xl md:text-3xl text-[#fbbf24]">欢迎!</span>
+        <span
+          class="absolute top-[15%] right-[12%] font-semibold text-lg sm:text-xl md:text-2xl text-[#f59e0b]">早上好</span>
+        <span class="absolute top-[45%] left-[5%] font-semibold text-lg sm:text-2xl text-[#eab308]">晚安</span>
+        <span class="absolute top-[40%] right-[8%] font-semibold text-xl md:text-2xl text-[#d97706]">下午好</span>
+        <span class="absolute bottom-[25%] left-[15%] font-semibold text-lg sm:text-2xl text-[#b45309]">谢谢</span>
+        <span
+          class="absolute bottom-[15%] right-[18%] font-semibold text-xl sm:text-2xl md:text-3xl text-[#fbbf24]">再见</span>
+      </div>
+    </section>
+
+    <!-- Footer: background #1E459F, logo kiri kutipan kanan, font Geologica untuk kutipan -->
+    <footer class="w-full bg-[#143D73] text-[#DEA921] py-10 md:py-14 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-start md:justify-between gap-8 md:gap-12">
+        <div class="flex flex-col gap-4 md:gap-5">
+          <div class="font-logo leading-tight">
+            <img src="assets/beranda/logo_footer.png" alt="Tambak Bayan logo"
+              class="h-10 sm:h-12 md:h-14 object-contain" />
+            <span class="sr-only">Tambak Bayan GO-WEB</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <a href="https://www.instagram.com/institutsenitambakbayan/" target="_blank" rel="noopener noreferrer"
+              class="w-9 h-9 flex items-center justify-center rounded-full bg-[#DEA921]/10 hover:bg-[#DEA921]/20 transition-colors"
+              aria-label="Instagram">
+              <i class="fab fa-instagram text-lg"></i>
+            </a>
+            <a href="mailto:contact@tambakbayan.com"
+              class="w-9 h-9 flex items-center justify-center rounded-full bg-[#DEA921]/10 hover:bg-[#DEA921]/20 transition-colors"
+              aria-label="Email">
+              <i class="fas fa-envelope text-lg"></i>
+            </a>
+            <a href="https://maps.app.goo.gl/mW5gzKq7QU7jjZYP8" target="_blank" rel="noopener noreferrer"
+              class="w-9 h-9 flex items-center justify-center rounded-full bg-[#DEA921]/10 hover:bg-[#DEA921]/20 transition-colors"
+              aria-label="Lokasi">
+              <i class="fas fa-location-dot text-lg"></i>
             </a>
           </div>
         </div>
-      </section>
+        <blockquote class="md:max-w-[55%] lg:max-w-[50%] font-sans">
+          <p class="text-[#DEA921]/95 text-sm sm:text-base leading-relaxed">
+            "Semua proses akan menemukan keindahannya pada waktu yang tepat.
+            Selama mural tetap hidup di dinding dan warga terus membuka meja
+            bagi para tamu, Tambak Bayan akan terus bersuara"
+            <cite class="block mt-2 font-semibold not-italic text-[#CF2A2A]">— Suseno Karja</cite>
+          </p>
+        </blockquote>
+      </div>
+    </footer>
+  </main>
 
-      <!-- Chinese Greetings: susun organik (tidak kaku grid), variasi kuning/oranye gelap, background merah -->
-      <section
-        class="relative w-full py-14 md:py-20 px-6 sm:px-8 min-h-[200px]"
-        aria-label="Sapaan dalam bahasa Mandarin"
-      >
-        <div class="max-w-5xl mx-auto relative h-full min-h-[180px]">
-          <span class="absolute top-[5%] left-[8%] font-semibold text-xl sm:text-2xl md:text-3xl text-[#fbbf24]">欢迎!</span>
-          <span class="absolute top-[15%] right-[12%] font-semibold text-lg sm:text-xl md:text-2xl text-[#f59e0b]">早上好</span>
-          <span class="absolute top-[45%] left-[5%] font-semibold text-lg sm:text-2xl text-[#eab308]">晚安</span>
-          <span class="absolute top-[40%] right-[8%] font-semibold text-xl md:text-2xl text-[#d97706]">下午好</span>
-          <span class="absolute bottom-[25%] left-[15%] font-semibold text-lg sm:text-2xl text-[#b45309]">谢谢</span>
-          <span class="absolute bottom-[15%] right-[18%] font-semibold text-xl sm:text-2xl md:text-3xl text-[#fbbf24]">再见</span>
-        </div>
-      </section>
-
-      <!-- Footer: background #1E459F, logo kiri kutipan kanan, font Geologica untuk kutipan -->
-      <footer class="w-full bg-[#143D73] text-[#DEA921] py-10 md:py-14 px-4 sm:px-6 lg:px-8">
-        <div
-          class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-start md:justify-between gap-8 md:gap-12"
-        >
-          <div class="flex flex-col gap-4 md:gap-5">
-            <div class="font-logo leading-tight">
-              <img src="assets/beranda/logo_footer.png" alt="Tambak Bayan logo" class="h-10 sm:h-12 md:h-14 object-contain" />
-              <span class="sr-only">Tambak Bayan GO-WEB</span>
-            </div>
-            <div class="flex items-center gap-4">
-              <a
-                href="https://www.instagram.com/institutsenitambakbayan/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="w-9 h-9 flex items-center justify-center rounded-full bg-[#DEA921]/10 hover:bg-[#DEA921]/20 transition-colors"
-                aria-label="Instagram"
-              >
-                <i class="fab fa-instagram text-lg"></i>
-              </a>
-              <a href="mailto:contact@tambakbayan.com" class="w-9 h-9 flex items-center justify-center rounded-full bg-[#DEA921]/10 hover:bg-[#DEA921]/20 transition-colors" aria-label="Email">
-                <i class="fas fa-envelope text-lg"></i>
-              </a>
-              <a
-                href="https://maps.app.goo.gl/mW5gzKq7QU7jjZYP8"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="w-9 h-9 flex items-center justify-center rounded-full bg-[#DEA921]/10 hover:bg-[#DEA921]/20 transition-colors"
-                aria-label="Lokasi"
-              >
-                <i class="fas fa-location-dot text-lg"></i>
-              </a>
-            </div>
-          </div>
-          <blockquote class="md:max-w-[55%] lg:max-w-[50%] font-sans">
-            <p class="text-[#DEA921]/95 text-sm sm:text-base leading-relaxed">
-              "Semua proses akan menemukan keindahannya pada waktu yang tepat.
-              Selama mural tetap hidup di dinding dan warga terus membuka meja
-              bagi para tamu, Tambak Bayan akan terus bersuara"
-              <cite class="block mt-2 font-semibold not-italic text-[#CF2A2A]">— Suseno Karja</cite>
-            </p>
-          </blockquote>
-        </div>
-      </footer>
-    </main>
-
-    <script>
-      // Mobile menu toggle
-      (function () {
-        var toggle = document.getElementById('menu-toggle');
-        var nav = document.getElementById('main-nav');
-        if (!toggle || !nav) return;
-        toggle.addEventListener('click', function () {
-          var expanded = toggle.getAttribute('aria-expanded') === 'true';
-          toggle.setAttribute('aria-expanded', !expanded);
-          nav.classList.toggle('hidden');
+  <script>
+    // Mobile menu toggle
+    (function () {
+      var toggle = document.getElementById('menu-toggle');
+      var nav = document.getElementById('main-nav');
+      if (!toggle || !nav) return;
+      toggle.addEventListener('click', function () {
+        var expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', !expanded);
+        nav.classList.toggle('hidden');
+      });
+      document.querySelectorAll('#main-nav a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          toggle.setAttribute('aria-expanded', 'false');
+          nav.classList.add('hidden');
         });
-        document.querySelectorAll('#main-nav a').forEach(function (link) {
-          link.addEventListener('click', function () {
-            toggle.setAttribute('aria-expanded', 'false');
-            nav.classList.add('hidden');
-          });
-        });
-      })();
+      });
+    })();
 
-      // Hero carousel
-      (function () {
-        var track = document.querySelector('.slides-track');
-        var indicators = document.querySelectorAll('.slide-indicators .indicator');
-        var prev = document.querySelector('.slide-prev');
-        var next = document.querySelector('.slide-next');
-        if (!track || !indicators.length) return;
-        var current = 0;
-        var total = indicators.length;
-        function update() {
-          track.style.transform = 'translateX(-' + current * (100 / total) + '%)';
-          indicators.forEach(function (el, i) {
-            el.classList.toggle('indicator-active', i === current);
-            el.classList.toggle('bg-tb-blue/60', i === current);
-            el.classList.toggle('bg-tb-blue/30', i !== current);
-          });
-        }
-        if (next) next.addEventListener('click', function () { current = (current + 1) % total; update(); });
-        if (prev) prev.addEventListener('click', function () { current = (current - 1 + total) % total; update(); });
+    // Hero carousel
+    (function () {
+      var track = document.querySelector('.slides-track');
+      var indicators = document.querySelectorAll('.slide-indicators .indicator');
+      var prev = document.querySelector('.slide-prev');
+      var next = document.querySelector('.slide-next');
+      if (!track || !indicators.length) return;
+      var current = 0;
+      var total = indicators.length;
+      function update() {
+        track.style.transform = 'translateX(-' + current * (100 / total) + '%)';
         indicators.forEach(function (el, i) {
-          el.addEventListener('click', function () { current = i; update(); });
+          el.classList.toggle('indicator-active', i === current);
+          el.classList.toggle('bg-tb-blue/60', i === current);
+          el.classList.toggle('bg-tb-blue/30', i !== current);
         });
-        setInterval(function () { current = (current + 1) % total; update(); }, 5000);
-      })();
-    </script>
-  </body>
+      }
+      if (next) next.addEventListener('click', function () { current = (current + 1) % total; update(); });
+      if (prev) prev.addEventListener('click', function () { current = (current - 1 + total) % total; update(); });
+      indicators.forEach(function (el, i) {
+        el.addEventListener('click', function () { current = i; update(); });
+      });
+      setInterval(function () { current = (current + 1) % total; update(); }, 5000);
+    })();
+  </script>
+</body>
+
 </html>
